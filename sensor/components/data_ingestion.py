@@ -1,5 +1,4 @@
 import os.path
-
 from sensor.logger import logging
 from sensor.exception import SensorException
 from sensor.entity.config_entity import DataIngestionConfig
@@ -23,7 +22,8 @@ class DataIngestion:
         try:
             logging.info("Exporting data from mongodb to feature store")
             sensor_data = SensorData()
-            dataframe = sensor_data.export_collection_as_dataframe(collection_name=self.data_ingestion_config.collection_name)
+            collection_name: str = COLLECTION_NAME
+            dataframe = sensor_data.export_collection_as_dataframe(collection_name)
             feature_store_file_path = self.data_ingestion_config.feature_store_file_path
 
             # creating folder
@@ -32,7 +32,7 @@ class DataIngestion:
             dataframe.to_csv(feature_store_file_path, index=False, header=True)
             return dataframe
         except  Exception as e:
-            raise SensorException(e, sys)
+            raise e
 
     def split_train_test_split(self)-> DataFrame:
         try:
@@ -46,4 +46,4 @@ class DataIngestion:
             data_ingestion_artifact = DataIngestionArtifact(trained_file_path=self.data_ingestion_config.training_file_path, test_file_path=self.data_ingestion_config.testing_file_path)
             return data_ingestion_artifact
         except SensorException as e:
-            raise SensorException(e, sys)
+            raise e

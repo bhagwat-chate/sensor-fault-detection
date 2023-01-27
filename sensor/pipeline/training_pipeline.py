@@ -23,7 +23,7 @@ class TrainPipeline:
 
             return data_ingestion_artifact
         except Exception as e:
-            raise SensorException(e, sys)
+            raise e
 
     def start_data_validation(self):
         try:
@@ -65,4 +65,4 @@ class TrainPipeline:
             data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
 
         except Exception as e:
-            raise SensorException(e, sys)
+            raise e

@@ -24,9 +24,9 @@ class SensorData:
             Export entire collection as dataframe. Return pd.DataFrame of collection
             """
             if database_name is None:
-                collection = self.mongo_client.database[database_name]
+                collection = self.mongo_client.database[collection_name]
             else:
-                collection = self.mongo_client.database[database_name][collection_name]
+                collection = self.mongo_client[database_name][collection_name]
 
             df = pd.DataFrame(list(collection.find()))
 
@@ -36,5 +36,5 @@ class SensorData:
             df.replace({"na": np.nan}, inplace=True)
 
             return df
-        except SensorException as e:
+        except Exception as e:
             raise SensorException(e, sys)
