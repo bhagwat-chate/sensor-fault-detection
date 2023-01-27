@@ -11,8 +11,8 @@ if __name__=="__main__":
     training_pipeline_config = TrainingPipelineConfig()
     data_ingestion_config = DataIngestionConfig(training_pipeline_config)
 
-    print("Training pipeline: ", training_pipeline_config.__dict__)
-    print("Data Ingestion Pipeline: ", data_ingestion_config.__dict__)
+    # print("Training pipeline: ", training_pipeline_config.__dict__)
+    # print("Data Ingestion Pipeline: ", data_ingestion_config.__dict__)
 
     train_pipeline = TrainPipeline()
     train_pipeline.run_pipeline()
