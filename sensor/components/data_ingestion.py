@@ -8,6 +8,8 @@ from sensor.constant.database import DATABASE_NAME
 from sensor.constant.database import COLLECTION_NAME
 from sklearn.model_selection import train_test_split
 from pandas import DataFrame
+from sensor.utils.main_utils import read_yaml_file, write_yaml_file
+from sensor.constant.training_pipeline import SCHEMA_FILE_PATH
 import sys
 
 
@@ -15,6 +17,7 @@ class DataIngestion:
 
     def __init__(self, data_ingestion_config: DataIngestionConfig):
         self.data_ingestion_config = data_ingestion_config
+        self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
 
     def export_data_into_feature_store(self) -> DataFrame:
         """
@@ -56,6 +59,7 @@ class DataIngestion:
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         try:
             dataframe = self.export_data_into_feature_store()
+            dataframe.drop(self._schema_config['drop_columns'], axis=1, inplace=True)
             self.split_train_test_split(dataframe=dataframe)
             data_ingestion_artifact = DataIngestionArtifact(trained_file_path=self.data_ingestion_config.training_file_path, test_file_path=self.data_ingestion_config.testing_file_path)
             return data_ingestion_artifact

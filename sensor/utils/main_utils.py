@@ -1,19 +1,16 @@
-import yaml, os, sys
+import yaml
 from sensor.exception import SensorException
 from sensor.logger import logging
-
+import os,sys
+import numpy as np
+import dill
 
 def read_yaml_file(file_path: str) -> dict:
     try:
-
         with open(file_path, "rb") as yaml_file:
-
-            logging.info("yaml file load complete")
-
             return yaml.safe_load(yaml_file)
-
     except Exception as e:
-        raise SensorException(e, sys)
+        raise SensorException(e, sys) from e
 
 
 def write_yaml_file(file_path: str, content: object, replace: bool = False) -> None:
@@ -21,10 +18,8 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
         if replace:
             if os.path.exists(file_path):
                 os.remove(file_path)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-            with open(file_path, "w") as file:
-                yaml.dump(content, file)
-
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "w") as file:
+            yaml.dump(content, file)
     except Exception as e:
         raise SensorException(e, sys)
