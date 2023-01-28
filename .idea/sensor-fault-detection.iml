@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="NewModuleRootManager">
-    <orderEntry type="jdk" jdkName="E:\sensor_fault_detection\ml-data-pipeline-main\venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="E:\sensor_fault_detection\sensor-fault-detection\env" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">

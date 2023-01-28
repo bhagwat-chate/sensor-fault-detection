@@ -1,6 +1,8 @@
 import yaml, os, sys
 from sensor.exception import SensorException
-from senslor.logger import logging
+from sensor.logger import logging
+
+
 def read_yaml_file(file_path: str) -> dict:
     try:
 
