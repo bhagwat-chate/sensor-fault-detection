@@ -30,8 +30,7 @@ class TrainPipeline:
         try:
             data_validation_config = DataValidationConfig(training_pipeline_config=self.training_pipeline_config)
             data_validation = DataValidation(data_ingestion_artifact=data_ingestion_artifact,
-            data_validation_config = data_validation_config
-            )
+                                            data_validation_config = data_validation_config)
             data_validation_artifact = data_validation.initiate_data_validation()
             return data_validation_artifact
         except  Exception as e:

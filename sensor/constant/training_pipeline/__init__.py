@@ -28,7 +28,7 @@ DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 
 
 """
-Data validation related constants starts with DATA_VALIDATION VAR NAME
+Data validation related constants start with DATA_VALIDATION VAR NAME
 """
 DATA_VALIDATION_DIR_NAME: str = "data_validation"
 DATA_VALIDATION_VALID_DIR: str = "validated"
