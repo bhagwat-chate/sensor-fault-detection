@@ -5,6 +5,7 @@ from sensor.entity.config_entity import DataIngestionConfig
 from sensor.entity.config_entity import DataValidationConfig
 from sensor.entity.config_entity import DataTransformationConfig
 from sensor.entity.config_entity import ModelTrainerConfig
+from sensor.entity.config_entity import ModelEvaluationConfig
 
 if __name__=="__main__":
 
@@ -25,7 +26,10 @@ if __name__=="__main__":
         # print("Data Transformation Config: ", data_transformation_config.__dict__)
 
         model_trainer = ModelTrainerConfig(training_pipeline_config)
-        print("Model Trainer Config: ", model_trainer.__dict__)
+        # print("Model Trainer Config: ", model_trainer.__dict__)
+
+        model_evaluation = ModelEvaluationConfig(training_pipeline_config)
+        print("Model evaluation config: ",model_evaluation.__dict__)
 
         train_pipeline = TrainPipeline()
         train_pipeline.run_pipeline()
