@@ -29,7 +29,7 @@ if __name__=="__main__":
         # print("Model Trainer Config: ", model_trainer.__dict__)
 
         model_evaluation = ModelEvaluationConfig(training_pipeline_config)
-        print("Model evaluation config: ",model_evaluation.__dict__)
+        # print("Model evaluation config: ",model_evaluation.__dict__)
 
         train_pipeline = TrainPipeline()
         train_pipeline.run_pipeline()

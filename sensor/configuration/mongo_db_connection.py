@@ -16,8 +16,8 @@ class MongoDBClient:
     def __init__(self, database_name=DATABASE_NAME, collection_name=COLLECTION_NAME)-> None:
         try:
             if MongoDBClient.client is None:
-                mongo_db_url = os.getenv(MONGODB_URL_KEY)
-                mongo_db_url = "mongodb+srv://apjaks:shhglknjdflkgklkfgfd@cluster0.q06oiaw.mongodb.net/?retryWrites=true&w=majority"
+                # mongo_db_url = os.getenv(MONGODB_URL_KEY)
+                mongo_db_url = "mongodb+srv://apjaks:uhrgcse234@cluster0.q06oiaw.mongodb.net/?retryWrites=true&w=majority"
                 MongoDBClient.client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
             self.client = MongoDBClient.client
             self.database = self.client[database_name]

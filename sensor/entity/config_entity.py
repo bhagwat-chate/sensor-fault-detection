@@ -16,6 +16,16 @@ from sensor.constant.training_pipeline import DATA_TRANSFORMATION_DIR_NAME
 from sensor.constant.training_pipeline import DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR
 from sensor.constant.training_pipeline import DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR
 
+from sensor.constant.training_pipeline import MODEL_TRAINER_DIR_NAME
+from sensor.constant.training_pipeline import MODEL_TRAINER_TRAINED_MODEL_DIR
+from sensor.constant.training_pipeline import MODEL_TRAINER_TRAINED_MODEL_NAME
+from sensor.constant.training_pipeline import MODEL_TRAINER_EXPECTED_SCORE
+from sensor.constant.training_pipeline import MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD
+
+from sensor.constant.training_pipeline import MODEL_PUSHER_DIR_NAME
+from sensor.constant.training_pipeline import MODEL_PUSHER_SAVED_MODEL_DIR
+
+
 class TrainingPipelineConfig:
     def __init__(self, timestamp=datetime.now()):
         timestamp = timestamp.strftime("%m_%d_%Y_%H_%M_%S")
@@ -82,5 +92,12 @@ class ModelEvaluationConfig:
                                                                    training_pipeline.MODEL_EVALUATION_REPORT_FILE_PATH)
 
 
-
-
+class ModelPusherConfig:
+    def __init__(self, training_pipeline_config = TrainingPipelineConfig):
+        self.model_evaluation_dir: str = os.path.join(training_pipeline_config.artifact_dir,
+                                                      training_pipeline.MODEL_PUSHER_DIR_NAME)
+        self.model_file_path = os.path.join(self.model_evaluation_dir, training_pipeline.MODEL_FILE_NAME)
+        timestamp = round(datetime.now().timestamp())
+        self.saved_model_dir = os.path.join(training_pipeline.SAVED_MODEL_DIR,
+                                            f"{timestamp}",
+                                            training_pipeline.MODEL_FILE_NAME)
