@@ -1,16 +1,15 @@
+import sys
+from sensor.exception import SensorException
+from sensor.logger import logging
+
 from sensor.entity.config_entity import TrainingPipelineConfig, DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig, ModelPusherConfig
 from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, DataTransformationArtifact, ModelTrainerArtifact, ModelEvaluationArtifact, ModelPusherArtifact
-
 from sensor.components.data_ingestion import DataIngestion
 from sensor.components.data_validation import DataValidation
 from sensor.components.data_transformation import DataTransformation
 from sensor.components.model_trainer import ModelTrainer
 from sensor.components.model_evaluation import ModelEvaluation
 from sensor.components.model_pusher import ModelPusher
-
-from sensor.exception import SensorException
-from sensor.logger import logging
-import sys
 
 
 class TrainPipeline:
@@ -88,7 +87,7 @@ class TrainPipeline:
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
             model_eval_artifact = self.start_model_evaluation(data_validation_artifact=data_validation_artifact, model_trainer_artifact=model_trainer_artifact)
 
-            if not model_eval_artifact.is_model_accecpted:
+            if not model_eval_artifact.is_model_accepted:
                 raise Exception("Newly trained model is not better than the existing model")
 
             model_pusher_artifact = self.start_model_pusher(model_eval_artifact=model_eval_artifact)

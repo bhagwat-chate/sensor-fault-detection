@@ -9,7 +9,7 @@ __pycache__/
 
 database_operation.py
 env/
-
+saved_models/
 
 
 # Distribution / packaging
