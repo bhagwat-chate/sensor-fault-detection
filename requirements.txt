@@ -7,6 +7,7 @@ imblearn==0.0
 certifi
 xgboost==1.6.2
 fastapi
-
+pandas
+uvicorn
 
 -e .
