@@ -83,7 +83,7 @@ class ModelEvaluation:
             model_eval_report = model_evaluation_artifact.__dict__
 
             # save the report
-            write_yaml_file(self.model_eval_config.model_evaluation_report_file_path, model_eval_report)
+            write_yaml_file(self.model_eval_config.report_file_path, model_eval_report)
             logging.info(f"Model evaluation artifact: {model_evaluation_artifact}")
             return model_evaluation_artifact
 
