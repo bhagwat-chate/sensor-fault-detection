@@ -1,8 +1,7 @@
-import os.path
-
+import os.path, sys
 from sensor.utils.main_utils import load_numpy_array_data
 from sensor.exception import SensorException
-from sensor.logging import logging
+from sensor.logger import logging
 from sensor.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact
 from sensor.entity.config_entity import ModelTrainerConfig
 from xgboost import XGBClassifier
@@ -12,10 +11,11 @@ from sensor.utils.main_utils import save_object, load_object
 
 
 class ModelTrainer:
-    def __init__(self, data_transformation_artifact=DataTransformationArtifact, model_trainer_config=ModelTrainerConfig):
+    def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
         try:
             self.model_trainer_config = model_trainer_config
             self.data_transformation_artifact = data_transformation_artifact
+
         except Exception as e:
             raise SensorException(e, sys)
 
@@ -59,12 +59,12 @@ class ModelTrainer:
                 logging.info("Model is not balanced")
                 raise Exception("Model is not good, try to do more experimentation")
 
-            preprocessor = load_object(self.data_transformation_artifact.transformed_object_file_path)
+            preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
 
             model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
             os.makedirs(model_dir_path, exist_ok=True)
             sensor_model = SensorModel(preprocessor=preprocessor, model=model)
-            save_object(self.model_trainer_config.trained_model_file_path, object=sensor_model)
+            save_object(self.model_trainer_config.trained_model_file_path, obj=sensor_model)
 
             # Model trainer artifact
 

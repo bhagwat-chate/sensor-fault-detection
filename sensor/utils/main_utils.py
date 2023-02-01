@@ -44,14 +44,24 @@ def save_object(file_path: str, obj: object) -> None:
     except Exception as e:
         raise SensorException(e, sys) from e
 
-def load_object(file_path: str, obj: object) -> object:
+def load_object(file_path: str, ) -> object:
     try:
         if not os.path.exists(file_path):
-            raise Exception(f"File path is not exists: {file_path}")
-
+            raise Exception(f"The file: {file_path} is not exists")
         with open(file_path, "rb") as file_obj:
-            dill.load(file_obj)
-            return dill
+            return dill.load(file_obj)
     except Exception as e:
         raise SensorException(e, sys) from e
 
+
+def load_numpy_array_data(file_path: str) -> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise SensorException(e, sys) from e

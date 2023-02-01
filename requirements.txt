@@ -5,4 +5,5 @@ PyYAML
 dill
 imblearn==0.0
 certifi
+xgboost==1.6.2
 -e .
