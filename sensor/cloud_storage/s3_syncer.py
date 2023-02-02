@@ -10,7 +10,7 @@ class S3Sync:
         command = f"aws s3 sync {folder} {aws_buket_url} "
         os.system(command)
 
-    def sync_folder_from_s3(self,folder,aws_bucket_url):
+    def sync_folder_from_s3(self,folder,aws_buket_url):
         command = f"aws s3 sync  {aws_buket_url} {folder} "
         os.system(command)
 
