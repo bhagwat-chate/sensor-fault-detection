@@ -29,13 +29,13 @@ The problem is to reduce the cost due to unnecessary repairs. So it is required 
 Before we run the project, make sure that you are having MongoDB in your local system, with Compass since we are using MongoDB for data storage. You also need AWS account to access the service like S3, ECR and EC2 instances.
 
 ## Data Collections
-![1 Data Collections.png](..%2Fsensor%20fault%20detection%20flowcharts%2FRun%2F1%20Data%20Collections.png)
+![1 Data Collections](https://user-images.githubusercontent.com/57287835/216497337-0fabf7ef-f98e-4dd8-970d-aeb6068c4ecc.png)
 
 ## Project Archietecture
-![2 Project Archietecture.png](..%2Fsensor%20fault%20detection%20flowcharts%2FRun%2F2%20Project%20Archietecture.png)
+![2 Project Archietecture](https://user-images.githubusercontent.com/57287835/216497385-51377479-f27a-4817-ae59-105e8f165dbc.png)
 
 ## Deployment Archietecture
-![3 Deployment Archietecture.png](..%2Fsensor%20fault%20detection%20flowcharts%2FRun%2F3%20Deployment%20Archietecture.png)
+![3 Deployment Archietecture](https://user-images.githubusercontent.com/57287835/216497409-1cdadabd-136f-4399-a768-26ce92ce18f7.png)
 
 ### Step 1: Clone the repository
 ```bash
