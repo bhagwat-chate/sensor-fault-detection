@@ -34,6 +34,9 @@ Before we run the project, make sure that you are having MongoDB in your local s
 ## Project Archietecture
 ![2 Project Archietecture](https://user-images.githubusercontent.com/57287835/216497385-51377479-f27a-4817-ae59-105e8f165dbc.png)
 
+## High Level Code Flow
+![0_Sensor Training Pipeline](https://user-images.githubusercontent.com/57287835/217145452-034e077f-7b9f-40eb-b2c4-bc0a59c0e6f9.png)
+
 ## Deployment Archietecture
 ![3 Deployment Archietecture](https://user-images.githubusercontent.com/57287835/216497409-1cdadabd-136f-4399-a768-26ce92ce18f7.png)
 
