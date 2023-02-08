@@ -1,5 +1,5 @@
+import sys
 import os
-
 from sensor.exception import SensorException
 from sensor.constant.training_pipeline import SAVED_MODEL_DIR
 from sensor.constant.training_pipeline import MODEL_FILE_NAME
@@ -17,23 +17,42 @@ class TargetValueMapping:
         mapping_response = self.to_dict()
         return dict(zip(mapping_response.values(), mapping_response.keys()))
 
+
+# class SensorModel:
+#     def __init__(self, preprocessor, model):
+#         try:
+#             self.preprocessor = preprocessor
+#             self.model = model
+#         except Exception as e:
+#             raise SensorException(e, sys)
+#
+#     def predict(self, x):
+#         try:
+#             x_transform = self.preprocessor.transform(x)
+#             y_hat = self.model.predict(x_transform)
+#
+#             return y_hat
+#         except Exception as e:
+#             raise SensorException(e, sys)
+
+
 class SensorModel:
+
     def __init__(self, preprocessor, model):
         try:
             self.preprocessor = preprocessor
             self.model = model
         except Exception as e:
-            raise SensorException(e, sys)
-
+            raise e
 
     def predict(self, x):
         try:
             x_transform = self.preprocessor.transform(x)
             y_hat = self.model.predict(x_transform)
-
             return y_hat
         except Exception as e:
-            raise SensorException(e, sys)
+            raise e
+
 
 class ModelResolver:
     def __init__(self, model_dir=SAVED_MODEL_DIR):

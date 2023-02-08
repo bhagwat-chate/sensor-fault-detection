@@ -78,7 +78,7 @@ async def predict_route():
 
 def main():
     try:
-        set_env_variable(env_file_path)
+        # set_env_variable(env_file_path)
         training_pipeline = TrainPipeline()
         training_pipeline.run_pipeline()
     except Exception as e:

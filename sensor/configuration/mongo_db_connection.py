@@ -8,7 +8,7 @@ from sensor.logger import logging
 from sensor.exception import SensorException
 import os, sys
 ca = certifi.where()
-
+import ssl
 
 class MongoDBClient:
     client = None
@@ -17,8 +17,8 @@ class MongoDBClient:
         try:
             if MongoDBClient.client is None:
                 # mongo_db_url = os.getenv(MONGODB_URL_KEY)
-                mongo_db_url = "mongodb+srv://apjaks:sdgaersd@cluster0.q06oiaw.mongodb.net/?retryWrites=true&w=majority"
-                MongoDBClient.client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
+                mongo_db_url = "mongodb+srv://apjaks:sdgdfhd@cluster0.q06oiaw.mongodb.net/?retryWrites=true&w=majority"
+                MongoDBClient.client = pymongo.MongoClient(mongo_db_url)
             self.client = MongoDBClient.client
             self.database = self.client[database_name]
             self.database_name = database_name

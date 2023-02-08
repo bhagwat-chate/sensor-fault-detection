@@ -18,7 +18,7 @@ class SensorData:
         except SensorException as e:
             raise SensorException(e, sys)
 
-    def export_collection_as_dataframe(self, collection_name: str, database_name: Optional[str] = None)-> pd.DataFrame:
+    def export_collection_as_dataframe(self, collection_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
         try:
             """
             Export entire collection as dataframe. Return pd.DataFrame of collection
