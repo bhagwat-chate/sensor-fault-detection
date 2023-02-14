@@ -84,7 +84,7 @@ class TrainPipeline:
             model_pusher = ModelPusher(model_pusher_config, model_eval_artifact)
             model_pusher_artifact = model_pusher.initiate_model_pusher()
             return model_pusher_artifact
-        except  Exception as e:
+        except Exception as e:
             raise SensorException(e, sys)
 
 
@@ -110,17 +110,17 @@ class TrainPipeline:
 
             data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validaton(data_ingestion_artifact=data_ingestion_artifact)
-            data_transformation_artifact = self.start_data_transformation(
-                data_validation_artifact=data_validation_artifact)
+            data_transformation_artifact = self.start_data_transformation(data_validation_artifact=data_validation_artifact)
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact)
             model_eval_artifact = self.start_model_evaluation(data_validation_artifact, model_trainer_artifact)
             if not model_eval_artifact.is_model_accepted:
                 raise Exception("Trained model is not better than the best model")
+
             model_pusher_artifact = self.start_model_pusher(model_eval_artifact)
             TrainPipeline.is_pipeline_running = False
 
-            self.sync_artifact_dir_to_s3()
-            self.sync_saved_model_dir_to_s3()
+            # self.sync_artifact_dir_to_s3()
+            # self.sync_saved_model_dir_to_s3()
 
         except  Exception as e:
 
