@@ -9,7 +9,4 @@ xgboost
 fastapi
 pandas
 uvicorn
-gdal
-
-ssl
 -e .
