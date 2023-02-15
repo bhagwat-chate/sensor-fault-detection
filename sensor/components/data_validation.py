@@ -8,6 +8,8 @@ from sensor.utils.main_utils import read_yaml_file,write_yaml_file
 from scipy.stats import ks_2samp
 import pandas as pd
 import os,sys
+
+
 class DataValidation:
 
     def __init__(self,data_ingestion_artifact:DataIngestionArtifact,
@@ -68,10 +70,10 @@ class DataValidation:
                 d2  = current_df[column]
                 is_same_dist = ks_2samp(d1,d2)
                 if threshold<=is_same_dist.pvalue:
-                    is_found=False
+                    is_found = False
                 else:
                     is_found = True 
-                    status=False
+                    status = False
                 report.update({column:{
                     "p_value":float(is_same_dist.pvalue),
                     "drift_status":is_found
@@ -82,7 +84,7 @@ class DataValidation:
             
             #Create directory
             dir_path = os.path.dirname(drift_report_file_path)
-            os.makedirs(dir_path,exist_ok=True)
+            os.makedirs(dir_path, exist_ok=True)
             write_yaml_file(file_path=drift_report_file_path,content=report,)
             return status
         except Exception as e:
