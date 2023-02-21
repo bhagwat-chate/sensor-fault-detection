@@ -86,6 +86,7 @@ def main():
         logging.exception(e)
 
 
+
 if __name__=="__main__":
     # main()
     # set_env_variable(env_file_path)
