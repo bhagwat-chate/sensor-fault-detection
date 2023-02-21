@@ -46,7 +46,7 @@ DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 PREPROCSSING_OBJECT_FILE_NAME: str = "processing.pkl"
 
 """
-Model training related constants sttart with MODEL TRAINER VAR NAME
+Model training related constants start with MODEL TRAINER VAR NAME
 """
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
 MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"

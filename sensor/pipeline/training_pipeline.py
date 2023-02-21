@@ -102,6 +102,10 @@ class TrainPipeline:
         except Exception as e:
             raise SensorException(e, sys)
 
+
+
+
+
     def run_pipeline(self):
         try:
 
