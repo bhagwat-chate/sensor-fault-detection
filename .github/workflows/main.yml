@@ -82,16 +82,16 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
 
-#      - name: Pull latest images
-#        run: |
-#         docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
-      - name: Stop and remove sensor container if running
+      - name: Pull latest images
         run: |
-         docker ps -q --filter "name=sensor" | grep -q . && docker stop sensor && docker rm -fv sensor
+         docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+      - name: Stop and remove sensor1 container if running
+        run: |
+         docker ps -q --filter "name=sensor1" | grep -q . && docker stop sensor1 && docker rm -fv sensor1
 
       - name: Run Docker Image to serve users
         run: |
-         docker run -d -p 80:8080 --name=sensor -e 'MONGO_DB_URL=${{ secrets.MONGO_DB_URL }}' -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         docker run -d -p 80:8080 --name=sensor1 -e 'MONGO_DB_URL=${{ secrets.MONGO_DB_URL }}' -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
       - name: Clean previous images and containers
         run: |
          docker system prune -f
