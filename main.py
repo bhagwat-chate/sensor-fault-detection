@@ -60,7 +60,7 @@ async def predict_route():
         #get data from user csv file
         #conver csv file to dataframe
 
-        df=None
+        df = None
         model_resolver = ModelResolver(model_dir=SAVED_MODEL_DIR)
         if not model_resolver.is_model_exists():
             return Response("Model is not available")
@@ -69,12 +69,12 @@ async def predict_route():
         model = load_object(file_path=best_model_path)
         y_pred = model.predict(df)
         df['predicted_column'] = y_pred
-        df['predicted_column'].replace(TargetValueMapping().reverse_mapping(),inplace=True)
+        df['predicted_column'].replace(TargetValueMapping().reverse_mapping(), inplace=True)
         
         #decide how to return file to user.
         
     except Exception as e:
-        raise Response(f"Error Occured! {e}")
+        raise Response(f"Error Occurred! {e}")
 
 
 
