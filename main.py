@@ -37,7 +37,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.get("/", tags=["authentication"])
 async def index():
     return RedirectResponse(url="/docs")
@@ -91,5 +90,5 @@ def main():
 if __name__=="__main__":
     # main()
     # set_env_variable(env_file_path)
-    app_run(app, host=APP_HOST, port=APP_PORT)  # to run over aws
-    # app_run(app, host=APP_HOST, port=8081)
+    # app_run(app, host=APP_HOST, port=APP_PORT)  # to run over aws
+    app_run(app, host=APP_HOST, port=8081)
