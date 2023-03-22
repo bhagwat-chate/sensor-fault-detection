@@ -77,7 +77,6 @@ async def predict_route():
         raise Response(f"Error Occurred! {e}")
 
 
-
 def main():
     try:
         # set_env_variable(env_file_path)
@@ -86,6 +85,7 @@ def main():
     except Exception as e:
         print(e)
         logging.exception(e)
+
 
 
 if __name__=="__main__":
